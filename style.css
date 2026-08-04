@@ -157,8 +157,8 @@ body.dark-mode #readerText { color:#eee!important; }
         display: flex; align-items: center; justify-content: center; flex-direction: column; padding-bottom: 10px; }
 
 /* ========== LIBRARY : FOOTER ========== */ 
-.controls-wrapper{ position: fixed; bottom: 0; left: 0; right: 0; height: 150px; display: flex; flex-direction: column; 
-        align-items: center; justify-content: space-evenly; gap: 5px; padding: 8px 12px 8px 12px; background: rgba(17,17,17,0.7); 
+.controls-wrapper{ position: fixed; bottom: 0; left: 0; right: 0; height: 160px; display: flex; flex-direction: column; 
+        align-items: center; justify-content: space-evenly; gap: 10px; padding: 8px 12px 8px 12px; background: rgba(17,17,17,0.7); 
         backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 1000;
         border-top: 1px solid rgba(255,255,255,0.1); box-sizing: border-box; } 
 .left-side, .right-side{ width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 8px; } 
@@ -181,8 +181,11 @@ body.dark-mode #readerText { color:#eee!important; }
 .reader-footer { display: flex; justify-content: space-between; padding: 20px; gap: 5px; }
 .reader-footer button { flex: 1; padding: 10px 10px; font-size: 14px; }
 
-/* Yung A- at A+ */
-.reader-footer button.small-btn { flex: 1; font-size: 12px; }  
+/* Para sa A- A+ Prev Next sa baba ng reader */
+.reader-controls { position: fixed; bottom: 0; left: 0; right: 0; padding: 10px 15px; display: flex; gap: 8px; 
+  background: white; box-sizing: border-box; border-top: 1px solid #ddd; }
+
+.reader-controls button { flex: 1; padding: 12px 5px; font-size: 14px; }  
 
 /* ICON BUTTONS SA GITNA */
 .font-controls{ display: flex; gap: 8px; background-color: #8B4513; color: white; transition: background-color 0.1s ease; } }
