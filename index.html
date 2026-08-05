@@ -22,6 +22,24 @@
   <div class="bg-overlay"></div>
   <h1 class="title">E-LIBRARY</h1>
 
+  <!-- SEARCH BOOK -->
+<div class="library-search">
+  <button id="searchToggleBtn" class="search-toggle">
+    <img
+        src="images/search.png"
+        alt="Search"
+        class="search-icon-img"
+        draggable="false">
+</button>
+  <div class="search-box">
+    <input
+      type="text"
+      id="bookSearch"
+      placeholder="Search here..."
+      autocomplete="off">
+  </div>
+</div>
+
   <!-- BOOKS -->
   <div class="book-container">
     <div class="book-item" data-book="emily">
@@ -58,7 +76,7 @@
         <div class="voice-speed">
           <div class="voice-select">
             <button id="voiceIconBtn">
-              <img src="images/voice PNG.jpg" alt="Voice">
+              <img src="images/voice.png" alt="Voice">
             </button>
             <div id="voicePopup" class="voice-popup hidden">
               <h3>Select Voice</h3>
