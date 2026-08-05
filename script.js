@@ -1,5 +1,5 @@
 /* ============================================================
-  PART 1. GLOBAL VARIABLES
+  GLOBAL VARIABLES
 ============================================================ */
 console.log("PART 1 LOADED: E-Library Home - Laptop");
 
@@ -14,7 +14,7 @@ let voiceMale = null; let voiceFemale = null; let selectedVoice = null; let curr
 let voicesList = []; let voicesLoaded = false; let currentUtterance = null; let previewUtterance = null;
 
 /* ============================================================
-  PART 2. PAGE 1 - E-LIBRARY
+  PAGE 1. E-LIBRARY
 ============================================================ */
 /* ------------------------------------------------------------
    FUNCTIONS
@@ -66,6 +66,22 @@ setTimeout(() => { showPage(bookName + '-poster'); }, 300); }
 document.querySelectorAll('.book-item').forEach(book => {
 book.addEventListener('click', () => { openBook(book.dataset.book); }); });
 
+/* ==========================================
+   LIBRARY SEARCH
+========================================== */
+const searchToggleBtn = document.getElementById("searchToggleBtn");
+const librarySearch = document.querySelector(".library-search");
+const bookSearch = document.getElementById("bookSearch");
+
+searchToggleBtn.addEventListener("click", (e) => { e.stopPropagation(); librarySearch.classList.toggle("active");
+if ( librarySearch.classList.contains("active")){ setTimeout(()=>{ bookSearch.focus(); },250); }
+else { bookSearch.value=""; }}); document.addEventListener("click",(e)=>{
+if(!librarySearch.contains(e.target)){ librarySearch.classList.remove("active"); bookSearch.value=""; } });
+document.addEventListener("keydown",(e)=>{
+if(document.activeElement === bookSearch) return; if( e.key.length === 1 && !e.ctrlKey && !e.altKey ){
+
+librarySearch.classList.add("active"); setTimeout(()=>{ bookSearch.focus(); bookSearch.value = e.key; },150); } });
+
 /* ------------------------------------------------------------
    EVENT LISTENERS
 ------------------------------------------------------------ */
@@ -116,7 +132,7 @@ if (e.key === 'Escape' && document.fullscreenElement) { toggleFullscreen(); }
 if (e.key === '+') { increaseText(); } if (e.key === '-') { decreaseText(); } });
 
 /* ============================================================
-  PART 3. POSTER PAGE
+  PAGE 2. COVER PAGE
 ============================================================ */
 /* ------------------------------------------------------------
    FUNCTIONS
@@ -142,7 +158,7 @@ if (e.key === '+') { increaseText(); } if (e.key === '-') { decreaseText(); } })
 
 
 /* ============================================================
-  PART 4. READER PAGE
+  PAGE 3. READERS PAGE
 ============================================================ */
 /* ------------------------------------------------------------
    FUNCTIONS
@@ -468,11 +484,8 @@ voicesLoaded = true;
 console.log("LOCKED Male Voice:", voiceMale?.name); console.log("LOCKED Female Voice:", voiceFemale?.name);
 currentGender = localStorage.getItem('preferredVoice') || 'female';
 currentRate = parseFloat(localStorage.getItem('preferredRate')) || 1.0;
-const speedSlider = document.getElementById('speedSlider');
-const speedLabel = document.getElementById('speedLabel');
-if (speedSlider) { speedSlider.value = currentRate;
-if (speedLabel) speedLabel.textContent = getSpeedText(currentRate); }
-setVoice(currentGender); }
+const speedSlider = document.getElementById('speedSlider'); const speedLabel = document.getElementById('speedLabel'); if (speedSlider) { speedSlider.value = currentRate;
+if (speedLabel) speedLabel.textContent = getSpeedText(currentRate); } setVoice(currentGender); }
 if (speechSynthesis.onvoiceschanged !== undefined) { speechSynthesis.onvoiceschanged = loadVoices; } loadVoices();
 
 /* ------------------------------------------------------------
@@ -545,9 +558,7 @@ const savedScale = parseInt(localStorage.getItem("libraryScale"));
 if (!isNaN(savedScale)) { currentSize = savedScale;
 switch (currentSize) { case 80: currentFontSize = 14; break; case 90: currentFontSize = 16; break;
 case 100: currentFontSize = 18; break; case 110: currentFontSize = 20; break; case 120: currentFontSize = 22; break; }
-updateScale(); }
-document.addEventListener("DOMContentLoaded", () => {
-setupAllBookButtons(); setupFontButtons();
+updateScale(); } document.addEventListener("DOMContentLoaded", () => { setupAllBookButtons(); setupFontButtons();
 document.querySelectorAll('[id^="increaseFontBtn"]').forEach(btn => { btn.addEventListener("click", function () {
 if (!currentBook) return; if (currentFontSize < 30) { currentFontSize += 2; }
 const idSuffix = currentBook.charAt(0).toUpperCase() + currentBook.slice(1);
