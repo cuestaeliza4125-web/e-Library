@@ -132,6 +132,21 @@ body.dark-mode #readerText { color:#eee!important; }
    /* 6. VOICE LIST */
    .voice-list button:hover { transform: scale(1.02); background: #e6bfa0; border-color: #d4a373; }
 
+/* ===========================================
+   LIBRARY SEARCH
+=========================================== */
+.library-search { position:absolute; top:40px; right:35px; display:flex; align-items:center; gap:5px; z-index:1000; }
+.search-toggle { background:none; border:none; padding:0; cursor:pointer; display:flex; align-items:center; justify-content:center; }
+.search-icon-img { width:52px; height:52px; transition:all .25s ease; user-select:none; pointer-events:none; }
+.search-toggle:hover .search-icon-img { transform:scale(1.10) translateY(-2px); filter:
+        drop-shadow(0 6px 12px rgba(0,0,0,.35)) drop-shadow(0 0 8px rgba(255,255,255,.25)); }
+.search-toggle:active .search-icon-img { transform:scale(.96); }
+.search-box { width:0; overflow:hidden; opacity:0; transition: width .35s ease, opacity .25s ease; }
+.search-box input { width:220px; height:42px; border-radius:30px; border:1px solid rgba(255,255,255,.35); 
+        background:rgba(250,250,248,.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 6px 18px rgba(0,0,0,.08); outline:none; padding:0 18px; font-size:15px; }
+.library-search.active .search-box { width:230px; opacity:1; }
+
 /* ============================== MOBILE ============================== */
 @media screen and (max-width: 768px) { html, body{ width:100%; height:100%; overflow:hidden; }
 
